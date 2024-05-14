@@ -3,7 +3,7 @@ header:
 
 distro: poky
 target:
-  - snapd-demo-image
+  - mlpa-snapd-test
 
 repos:
   meta-snapd:
@@ -51,7 +51,7 @@ local_conf_header:
   debug-tweaks: |
     EXTRA_IMAGE_FEATURES = "debug-tweaks"
   distro: |
-    DISTRO_FEATURES:append = " apparmor security usrmerge"
+    DISTRO_FEATURES:append = " apparmor security usrmerge tpm2"
   systemd: |
     INIT_MANAGER = "systemd"
     DISTRO_FEATURES:append = " systemd"

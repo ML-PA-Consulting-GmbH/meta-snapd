@@ -1,8 +1,8 @@
 PR = "r0"
 
 
-BASEPV = "2.61.3"
-SRC_URI = "git://github.com/snapcore/snapd.git;protocol=https;branch=release/${BASEPV};destsuffix=git/"
+BASEPV = "v2.62.13"
+SRC_URI = "git://github.com/ML-PA-Consulting-GmbH/snapd.git;protocol=https;branch=release/${BASEPV};destsuffix=git/"
 PV = "${BASEPV}+git${SRCPV}"
 S = "${WORKDIR}/git"
 
