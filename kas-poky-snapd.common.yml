@@ -3,7 +3,7 @@ header:
 
 distro: poky
 target:
-  - mlpa-snapd-test
+  - m2cp-yocto-snapd
 
 repos:
   meta-snapd:

@@ -1,4 +1,4 @@
-SUMMARY = "A small demo image to demo snaps running on OpenEmbedded/Yocto"
+SUMMARY = "M2CP Image for OpenEmbedded/Yocto devices with snapd"
 
 IMAGE_INSTALL = " \
     packagegroup-core-boot \
