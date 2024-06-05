@@ -2,10 +2,10 @@
 # on the native system
 SUMMARY = "The snap tool to enable building snaps and system seeds"
 HOMEPAGE = "https://www.snapcraft.io"
-LICENSE = "GPL-3.0-only"
-LIC_FILES_CHKSUM = "file://${WORKDIR}/snapd-${PV}/COPYING;md5=d32239bcb673463ab874e80d47fae504"
+LICENSE = "CLOSED"
+# LIC_FILES_CHKSUM = "file://${WORKDIR}/snapd-${PV}/COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
-require snapd-v2.62.13.inc
+require snapd-v2.62.14-yocto.inc
 S = "${WORKDIR}/snapd-${PV}"
 
 RDEPENDS_${PN} += "		\

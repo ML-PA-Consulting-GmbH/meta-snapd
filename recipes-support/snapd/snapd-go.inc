@@ -25,7 +25,6 @@ GO_BUILD_TAGS = "nosecboot nomanagers"
 # to change the symlink set-up, to target snapd's environment.
 snapd_go_do_configure() {
 	mkdir -p ${S}/src/github.com/snapcore
-	cp -r ${DIR_SRC}/snapd/snapd-sources/* ${S}/src/github.com/snapcore/
 	ln -snf ${S} ${S}/src/${GO_IMPORT}
 	go_do_configure
 	# internally calls go run to generate some assets
