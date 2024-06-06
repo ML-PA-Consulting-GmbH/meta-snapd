@@ -4,7 +4,7 @@ PV = "${BASEPV}+git${SRCPV}"
 S = "${WORKDIR}/git"
 
 # SRCREV = "40efd81c2f35213eabf2df83fb9efabe88fa124e"
-SRCREV = "d73f88798532493d0cbe388b67b0c2eae0c9d0a2"
+SRCREV = "2502a253b73bb7ddcaae4993435fd7d02f2febe2"
 
 DEFAULT_PREFERENCE ??= "-1"
 
