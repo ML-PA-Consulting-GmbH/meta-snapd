@@ -1,10 +1,10 @@
-BASEPV = "v2.62.14-yocto"
+BASEPV = "v2.57.2.4-yocto"
 SRC_URI = "git://github.com/ML-PA-Consulting-GmbH/snapd.git;protocol=https;branch=release/${BASEPV};destsuffix=git/"
 PV = "${BASEPV}+git${SRCPV}"
 S = "${WORKDIR}/git"
 
 # SRCREV = "40efd81c2f35213eabf2df83fb9efabe88fa124e"
-SRCREV = "2502a253b73bb7ddcaae4993435fd7d02f2febe2"
+SRCREV = "dcc452611e6ac8b62c9acf04be5cba7ef7f54fd6"
 
 DEFAULT_PREFERENCE ??= "-1"
 

@@ -5,7 +5,7 @@ HOMEPAGE = "https://www.snapcraft.io"
 LICENSE = "CLOSED"
 # LIC_FILES_CHKSUM = "file://${WORKDIR}/snapd-${PV}/COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
-require snapd-v2.62.14-yocto.inc
+require snapd-v2.57.2.4-yocto.inc
 S = "${WORKDIR}/snapd-${PV}"
 
 RDEPENDS_${PN} += "		\
