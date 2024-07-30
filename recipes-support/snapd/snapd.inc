@@ -25,14 +25,18 @@ DEPENDS += " \
 RDEPENDS:${PN} += " \
 	bash			\
 	ca-certificates		\
-	kernel-module-squashfs	\
 	squashfs-tools		\
+"
+
+RDEPENDS:${PN}:append:poky = "  \
+  kernel-module-squashfs  \
 "
 
 EXTRA_OECONF += "			\
 	--libexecdir=${libdir}/snapd	\
 	--with-snap-mount-dir=/snap     \
 "
+
 
 inherit systemd autotools pkgconfig
 
