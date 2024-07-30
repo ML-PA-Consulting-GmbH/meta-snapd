@@ -1,14 +1,14 @@
 SUMMARY = "The snapd and snap tools enable systems to work with .snap files."
 HOMEPAGE = "https://www.snapcraft.io"
-LICENSE = "GPL-3.0-only"
-LIC_FILES_CHKSUM = "file://${WORKDIR}/${PN}-${PV}/COPYING;md5=d32239bcb673463ab874e80d47fae504"
+# LICENSE = "GPL-3.0-only"
+# LIC_FILES_CHKSUM = "file://${WORKDIR}/${PN}-${PV}/COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 PACKAGECONFIG ??= "${@bb.utils.contains('DISTRO_FEATURES', 'apparmor', 'apparmor', '', d)}"
 PACKAGECONFIG[apparmor] = "--enable-apparmor,--disable-apparmor,apparmor,apparmor"
 
 #SRC_URI:append = " file://0001-mkversion-data-generate-supported-assert-formats-inf.patch"
 
-LIC_FILES_CHKSUM = "file://${S}/COPYING;md5=d32239bcb673463ab874e80d47fae504"
+# LIC_FILES_CHKSUM = "file://${S}/COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 DEPENDS += " \
 	glib-2.0		\
