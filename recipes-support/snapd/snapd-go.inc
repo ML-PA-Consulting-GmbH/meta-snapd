@@ -25,17 +25,16 @@ GO_BUILD_TAGS = "nosecboot nomanagers"
 # to change the symlink set-up, to target snapd's environment.
 snapd_go_do_configure() {
 	mkdir -p ${S}/src/github.com/snapcore
-	ls -la ${S}
 	ln -snf ${S} ${S}/src/${GO_IMPORT}
 	go_do_configure
 	# internally calls go run to generate some assets
-	#(cd ${S} ; GOARCH=${GOHOSTARCH} sh -x ./mkversion.sh ${PV})
+	(cd ${S} ; GOARCH=${GOHOSTARCH} sh -x ./mkversion.sh ${PV})
 }
 
 snapd_go_do_compile() {
 	(
 		cd ${S}
-		#test -d vendor || ${GO} mod vendor "${@bb.utils.contains('GOBUILDFLAGS', '-modcacherw', '-modcacherw', '', d)}"
+		test -d vendor || ${GO} mod vendor "${@bb.utils.contains('GOBUILDFLAGS', '-modcacherw', '-modcacherw', '', d)}"
 		${GO} install -tags '${GO_BUILD_TAGS_snapd}' ${GOBUILDFLAGS} github.com/snapcore/snapd/cmd/snapd
 		${GO} install -tags '${GO_BUILD_TAGS}' ${GOBUILDFLAGS} github.com/snapcore/snapd/cmd/snap
 		${GO} install -tags '${GO_BUILD_TAGS}' ${GOBUILDFLAGS} github.com/snapcore/snapd/cmd/snap-seccomp
