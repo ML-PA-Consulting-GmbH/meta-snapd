@@ -28,7 +28,7 @@ snapd_go_do_configure() {
 	ln -snf ${S} ${S}/src/${GO_IMPORT}
 	go_do_configure
 	# internally calls go run to generate some assets
-	(cd ${S} ; GOARCH=${GOHOSTARCH} sh -x ./mkversion.sh ${PV})
+	#(cd ${S} ; GOARCH=${GOHOSTARCH} sh -x ./mkversion.sh ${PV})
 }
 
 snapd_go_do_compile() {
