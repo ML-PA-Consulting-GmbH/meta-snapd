@@ -5,6 +5,9 @@ HOMEPAGE = "https://www.snapcraft.io"
 # LICENSE = "GPL-3.0-only"
 # LIC_FILES_CHKSUM = "file://${WORKDIR}/snapd-${PV}/COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
+LICENSE = "CLOSED"
+LIC_FILES_CHKSUM = ""
+
 require snapd-2.61.1.inc
 S = "${WORKDIR}/snapd-${PV}"
 
