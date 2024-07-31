@@ -1,6 +1,6 @@
 SRC_URI = "https://github.com/ML-PA-Consulting-GmbH/snapd/releases/download/${PV}/snapd_${PV}.vendor.tar.xz"
 
-SRC_URI[md5sum] = "bb2160e0463ef42658025752ab77a34a"
-SRC_URI[sha256sum] = "24dd6102b2053fd6fce300cac91af084cba1031a1921b09acf401a8d7e6f78aa"
+SRC_URI[md5sum] = "b0f6a5f3c5170ce9d4d8d7dba6ea1fe1"
+SRC_URI[sha256sum] = "74364cfdee4f62f014110a5fbd7f05aabee2f274166d5627c99e3ad85d43116b"
 
 S = "${WORKDIR}/${PN}-${PV}"
