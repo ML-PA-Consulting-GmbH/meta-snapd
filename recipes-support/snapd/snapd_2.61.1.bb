@@ -1,22 +1,3 @@
-PV = "2.61.1"
-
-SRC_URI = "https://github.com/ML-PA-Consulting-GmbH/snapd/releases/download/${PV}/snapd_${PV}.tar.xz"
-
-SRC_URI[md5sum] = "201de7cf495c0c5cdd78302dc7c1aef4"
-SRC_URI[sha256sum] = "73cc01106489961846862aa2ef41205499ea6866746d02228e77c4040b8be4d0"
-
-S = "${WORKDIR}/${PN}-${PV}"
-
-PR = "r0"
-
-BASEPV = "2.61.1"
-SRC_URI = "git://github.com/ML-PA-Consulting-GmbH/snapd.git;protocol=https;branch=release/${BASEPV};destsuffix=git/"
-PV = "${BASEPV}+git${SRCPV}"
-S = "${WORKDIR}/git"
-
-# SRCREV = "12e48ef9a63b92964a57e549107c648887b040eb"
-SRCREV = "9fce61939f8dfd3d5061f1b8c49ccf8717076b6e"
-
 DEFAULT_PREFERENCE ??= "-1"
 
 # Allow fetching dependencies during compilation.
@@ -31,28 +12,19 @@ HOMEPAGE = "https://www.snapcraft.io"
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = ""
 
-S = "${WORKDIR}/snapd-${PV}"
+S = "${WORKDIR}/snapd"
 
 RDEPENDS_${PN} += "		\
 	ca-certificates		\
 	bash \
 "
 
-require snapd-go.inc
 
 inherit native
 
-do_configure() {
-	snapd_go_do_configure
-}
-
-do_compile() {
-	snapd_go_do_compile_snap
-}
 
 do_install() {
 	install -d ${D}${bindir}
-	install -m 0755 ${B}/${GO_BUILD_BINDIR}/snap ${D}${bindir}
 }
 
 RDEPENDS:${PN} += "squashfs-tools"
@@ -104,12 +76,10 @@ SYSTEMD_SERVICE:${PN} = "snapd.service \
 "
 
 do_configure() {
-	snapd_go_do_configure
 	autotools_do_configure
 }
 
 do_compile() {
-	snapd_go_do_compile
 	# build the rest
 	(
 		cd ${B}
@@ -147,7 +117,6 @@ do_install() {
 	   ${D}${systemd_unitdir}
 	rm -rf ${D}${prefix}${systemd_unitdir}
 
-	snapd_go_install
 
 	echo "PATH=\$PATH:/snap/bin" > ${D}${sysconfdir}/profile.d/20-snap.sh
 
