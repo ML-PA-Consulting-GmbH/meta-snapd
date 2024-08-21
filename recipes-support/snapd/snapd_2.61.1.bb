@@ -1,5 +1,9 @@
 DEFAULT_PREFERENCE ??= "-1"
 
+inherit systemd autotools pkgconfig
+
+inherit native
+
 # Allow fetching dependencies during compilation.
 # Normally they are a part of the tarball
 do_compile[network] = "1"
@@ -19,8 +23,6 @@ RDEPENDS_${PN} += "		\
 	bash \
 "
 
-
-#inherit native
 
 
 do_install() {
@@ -65,8 +67,6 @@ EXTRA_OECONF += "			\
 	--with-snap-mount-dir=/snap     \
 "
 
-
-inherit systemd autotools pkgconfig
 
 
 # Our tools build with autotools are inside the cmd subdirectory
