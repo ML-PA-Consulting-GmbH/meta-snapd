@@ -6,7 +6,7 @@ SRC_URI = "git://github.com/ML-PA-Consulting-GmbH/snapd.git;protocol=https;branc
 PV = "${BASEPV}+git${SRCPV}"
 S = "${WORKDIR}/git"
 
-SRCREV = "b0bf0594cc69540a08f3b90d3b5db60b0f5df42c"
+SRCREV = "ff92f7cc5e59ef82d47220e18b2381ceb5f1632f"
 
 DEFAULT_PREFERENCE ??= "-1"
 
