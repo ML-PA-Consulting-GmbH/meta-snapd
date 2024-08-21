@@ -20,7 +20,7 @@ RDEPENDS_${PN} += "		\
 "
 
 
-inherit native
+#inherit native
 
 
 do_install() {
