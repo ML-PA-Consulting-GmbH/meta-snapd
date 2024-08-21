@@ -34,7 +34,7 @@ INHIBIT_SYSROOT_STRIP = "1"
 #PACKAGECONFIG ??= "${@bb.utils.contains('DISTRO_FEATURES', 'apparmor', 'apparmor', '', d)}"
 #PACKAGECONFIG[apparmor] = "--enable-apparmor,--disable-apparmor,apparmor,apparmor"
 
-SRC_URI:append = " file://0001-mkversion-data-generate-supported-assert-formats-inf.patch"
+#SRC_URI:append = " file://0001-mkversion-data-generate-supported-assert-formats-inf.patch"
 
 DEPENDS += " \
 	glib-2.0		\

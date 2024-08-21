@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/${PN}-${PV}/COPYING;md5=d32239bcb673463ab8
 PACKAGECONFIG ??= "${@bb.utils.contains('DISTRO_FEATURES', 'apparmor', 'apparmor', '', d)}"
 PACKAGECONFIG[apparmor] = "--enable-apparmor,--disable-apparmor,apparmor,apparmor"
 
-SRC_URI:append = " file://0001-mkversion-data-generate-supported-assert-formats-inf.patch"
+#SRC_URI:append = " file://0001-mkversion-data-generate-supported-assert-formats-inf.patch"
 
 LIC_FILES_CHKSUM = "file://${S}/COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
