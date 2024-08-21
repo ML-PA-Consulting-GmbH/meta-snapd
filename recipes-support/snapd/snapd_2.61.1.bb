@@ -90,6 +90,7 @@ do_compile() {
 }
 
 do_install() {
+	oe_runmake -C ${B} distclean DESTDIR=${D} 
 	install -d ${D}${libdir}/snapd
 	install -d ${D}${bindir}
 	install -d ${D}${systemd_unitdir}/system
