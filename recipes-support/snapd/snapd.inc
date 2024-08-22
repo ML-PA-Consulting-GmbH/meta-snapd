@@ -26,6 +26,10 @@ RDEPENDS:${PN} += " \
 	squashfs-tools		\
 "
 
+RDEPENDS:${PN}:append:poky = "  \
+  kernel-module-squashfs  \
+"
+
 EXTRA_OECONF += "			\
 	--libexecdir=${libdir}/snapd	\
 	--with-snap-mount-dir=/snap     \
