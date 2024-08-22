@@ -22,7 +22,6 @@ DEPENDS += " \
 RDEPENDS:${PN} += " \
 	bash			\
 	ca-certificates		\
-	kernel-module-squashfs	\
 	squashfs-tools		\
 "
 

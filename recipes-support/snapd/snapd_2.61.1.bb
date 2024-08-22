@@ -55,7 +55,6 @@ RDEPENDS:${PN} += " \
 "
 
 RDEPENDS:${PN}:append:poky = "  \
-  kernel-module-squashfs  \
   openssh-server \
   squashfs-tools \
   ssh-server-openssh \
