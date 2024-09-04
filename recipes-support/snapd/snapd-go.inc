@@ -26,6 +26,7 @@ GO_BUILD_TAGS = "nosecboot nomanagers"
 snapd_go_do_configure() {
 	mkdir -p ${S}/src/github.com/snapcore
 	ln -snf ${S} ${S}/src/${GO_IMPORT}
+	cp ${WORKDIR}/../../../../../poky/meta-snapd/recipes-support/snapd/files/constants.go ${S}/constants/constants.go
 	go_do_configure
 	# internally calls go run to generate some assets
 	(cd ${S} ; GOARCH=${GOHOSTARCH} sh -x ./mkversion.sh ${PV})
@@ -35,7 +36,6 @@ snapd_go_do_compile() {
 	(
 		cd ${S}
 		test -d vendor || ${GO} mod vendor "${@bb.utils.contains('GOBUILDFLAGS', '-modcacherw', '-modcacherw', '', d)}"
-		cp ${WORKDIR}/../../../../../poky/meta-snapd/recipes-support/snapd/files/constants.go github.com/snapcore/snapd/constants.go
 		${GO} install -tags '${GO_BUILD_TAGS_snapd}' ${GOBUILDFLAGS} github.com/snapcore/snapd/cmd/snapd
 		${GO} install -tags '${GO_BUILD_TAGS}' ${GOBUILDFLAGS} github.com/snapcore/snapd/cmd/snap
 		${GO} install -tags '${GO_BUILD_TAGS}' ${GOBUILDFLAGS} github.com/snapcore/snapd/cmd/snap-seccomp
