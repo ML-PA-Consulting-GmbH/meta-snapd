@@ -115,9 +115,15 @@ do_install() {
 	# varaible in systemd.pc so the build code does an educated guess of using
 	# ${prefix}/lib/systemd/system-environment-generators which ends up as
 	# /usr/lib/systemd/.., but we want /lib/systemd/..
-	cp -av ${D}${prefix}${systemd_unitdir}/system-environment-generators \
-	   ${D}${systemd_unitdir}
-	rm -rf ${D}${prefix}${systemd_unitdir}
+	if ${@bb.utils.contains("DISTRO_FEATURES", "usrmerge", "false", "true", d)}; then
+		# systemd system-environment-generators directory is not handled with a
+		# varaible in systemd.pc so the build code does an educated guess of using
+		# ${prefix}/lib/systemd/system-environment-generators which ends up as
+		# /usr/lib/systemd/.., but we want /lib/systemd/..
+		cp -av ${D}${prefix}${systemd_unitdir}/system-environment-generators ${D}${systemd_unitdir}
+		rm -rf ${D}${prefix}${systemd_unitdir}
+	fi
+	rm -rf ${D}${base_prefix}${systemd_unitdir}/user
 
 
 	echo "PATH=\$PATH:/snap/bin" > ${D}${sysconfdir}/profile.d/20-snap.sh
