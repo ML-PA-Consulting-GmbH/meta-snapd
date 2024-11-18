@@ -1,14 +1,42 @@
-SUMMARY = "The snapd and snap tools enable systems to work with .snap files."
+DEFAULT_PREFERENCE ??= "-1"
+
+inherit systemd autotools pkgconfig
+
+inherit native
+
+# Allow fetching dependencies during compilation.
+# Normally they are a part of the tarball
+do_compile[network] = "1"
+
+# Just the snap tool, as there is no real use case for running the whole snapd
+# on the native system
+SUMMARY = "The snap tool to enable building snaps and system seeds"
 HOMEPAGE = "https://www.snapcraft.io"
+
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = ""
 
-PACKAGECONFIG ??= "${@bb.utils.contains('DISTRO_FEATURES', 'apparmor', 'apparmor', '', d)}"
-PACKAGECONFIG[apparmor] = "--enable-apparmor,--disable-apparmor,apparmor,apparmor"
+S = "${WORKDIR}/snapd"
+
+RDEPENDS_${PN} += "		\
+	ca-certificates		\
+	bash \
+"
+
+
+
+do_install() {
+	install -d ${D}${bindir}
+}
+
+RDEPENDS:${PN} += "squashfs-tools"
+
+INHIBIT_SYSROOT_STRIP = "1"
+
+#PACKAGECONFIG ??= "${@bb.utils.contains('DISTRO_FEATURES', 'apparmor', 'apparmor', '', d)}"
+#PACKAGECONFIG[apparmor] = "--enable-apparmor,--disable-apparmor,apparmor,apparmor"
 
 #SRC_URI:append = " file://0001-mkversion-data-generate-supported-assert-formats-inf.patch"
-
-LIC_FILES_CHKSUM = ""
 
 DEPENDS += " \
 	glib-2.0		\
@@ -23,10 +51,14 @@ RDEPENDS:${PN} += " \
 	bash			\
 	ca-certificates		\
 	squashfs-tools		\
+	ssh-server-openssh \
 "
 
 RDEPENDS:${PN}:append:poky = "  \
-  kernel-module-squashfs  \
+  openssh-server \
+  squashfs-tools \
+  ssh-server-openssh \
+  apparmor \
 "
 
 EXTRA_OECONF += "			\
@@ -34,9 +66,7 @@ EXTRA_OECONF += "			\
 	--with-snap-mount-dir=/snap     \
 "
 
-inherit systemd autotools pkgconfig
 
-require snapd-go.inc
 
 # Our tools build with autotools are inside the cmd subdirectory
 # and we need to tell the autotools class to look in there.
@@ -47,12 +77,10 @@ SYSTEMD_SERVICE:${PN} = "snapd.service \
 "
 
 do_configure() {
-	snapd_go_do_configure
 	autotools_do_configure
 }
 
 do_compile() {
-	snapd_go_do_compile
 	# build the rest
 	(
 		cd ${B}
@@ -61,6 +89,7 @@ do_compile() {
 }
 
 do_install() {
+	# oe_runmake -C ${B} distclean DESTDIR=${D}
 	install -d ${D}${libdir}/snapd
 	install -d ${D}${bindir}
 	install -d ${D}${systemd_unitdir}/system
@@ -90,7 +119,6 @@ do_install() {
 	   ${D}${systemd_unitdir}
 	rm -rf ${D}${prefix}${systemd_unitdir}
 
-	snapd_go_install
 
 	echo "PATH=\$PATH:/snap/bin" > ${D}${sysconfdir}/profile.d/20-snap.sh
 
