@@ -25,9 +25,9 @@ RDEPENDS:${PN} += " \
 	squashfs-tools		\
 "
 
-RDEPENDS:${PN}:append:poky = "  \
-  kernel-module-squashfs  \
-"
+#RDEPENDS:${PN}:append:poky = "  \
+#  kernel-module-squashfs  \
+#"
 
 EXTRA_OECONF += "			\
 	--libexecdir=${libdir}/snapd	\
@@ -47,6 +47,8 @@ SYSTEMD_SERVICE:${PN} = "snapd.service \
 "
 
 do_configure() {
+        export GOPROXY=https://proxy.golang.org
+        export GODEBUG=netdns=go+v4
 	snapd_go_do_configure
 	autotools_do_configure
 }
