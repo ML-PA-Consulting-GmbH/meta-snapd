@@ -31,11 +31,11 @@ index d563ba2..20051db 100755
      MOD=--
  fi
 -fmts=$(cd "$GO_GENERATE_BUILDDIR" ; go run $MOD ./asserts/info)
-+if [ ! -f ./data/asserts.info ]; then
-+    fmts=$(cd "$GO_GENERATE_BUILDDIR" ; go run $MOD ./asserts/info)
-+else
-+    fmts=$(cat ./data/asserts.info)
-+fi
++#if [ ! -f ./data/asserts.info ]; then
++#    fmts=$(cd "$GO_GENERATE_BUILDDIR" ; go run $MOD ./asserts/info)
++#else
++fmts="2.72.0
++#fi
  
  cat <<EOF > "$PKG_BUILDDIR/data/info"
  VERSION=$v
