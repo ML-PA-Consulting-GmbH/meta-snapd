@@ -35,6 +35,8 @@ snapd_go_do_compile() {
 	(
 		cd ${S}
 		#cp /work/src/keys-and-urls/constants.go constants/constants.go
+		sed -i "s/go 1.22/go 1.26.0/g" go.mod
+		sed -i "s/toolchain go1.24.2/\/\/toolchain go1.24.2/g" go.mod
 		test -d vendor || ${GO} mod vendor "${@bb.utils.contains('GOBUILDFLAGS', '-modcacherw', '-modcacherw', '', d)}"
 		${GO} install -tags '${GO_BUILD_TAGS_snapd}' ${GOBUILDFLAGS} github.com/snapcore/snapd/cmd/snapd
 		${GO} install -tags '${GO_BUILD_TAGS}' ${GOBUILDFLAGS} github.com/snapcore/snapd/cmd/snap
