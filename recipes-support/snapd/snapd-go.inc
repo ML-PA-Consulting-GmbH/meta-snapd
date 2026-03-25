@@ -31,9 +31,8 @@ snapd_go_do_configure() {
 
 snapd_go_do_compile() {
 	(
-		cd ${S}
-		ls -la
-		GOARCH=${GOHOSTARCH} sh -x ./oe-workdir/mkversion.sh ${PV}
+		cd ${S}/oe-workdir
+		GOARCH=${GOHOSTARCH} sh -x ./mkversion.sh ${PV}
 		test -d vendor || ${GO} mod vendor "${@bb.utils.contains('GOBUILDFLAGS', '-modcacherw', '-modcacherw', '', d)}"
 		${GO} install -tags '${GO_BUILD_TAGS_snapd}' ${GOBUILDFLAGS} github.com/snapcore/snapd/cmd/snapd
 		${GO} install -tags '${GO_BUILD_TAGS}' ${GOBUILDFLAGS} github.com/snapcore/snapd/cmd/snap
