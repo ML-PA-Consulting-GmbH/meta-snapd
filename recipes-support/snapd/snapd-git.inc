@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = ""
 
 PV = "v4.3.0+up2.75.1"
 
-SRC_URI = "git://github.com/ML-PA-Consulting-GmbH/snapd.git;tag=${PV};protocol=https;branch=main"
+SRC_URI = "git://github.com/ML-PA-Consulting-GmbH/snapd.git;tag=${PV};protocol=https;branch=master"
 #SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
