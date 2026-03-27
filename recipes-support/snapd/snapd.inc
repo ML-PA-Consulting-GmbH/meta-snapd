@@ -1,7 +1,7 @@
 SUMMARY = "The snapd and snap tools enable systems to work with .snap files."
 HOMEPAGE = "https://www.snapcraft.io"
 LICENSE = "CLOSED"
-LIC_FILES_CHKSUM = ""
+#LIC_FILES_CHKSUM = ""
 
 PACKAGECONFIG ??= "${@bb.utils.contains('DISTRO_FEATURES', 'apparmor', 'apparmor', '', d)}"
 PACKAGECONFIG[apparmor] = "--enable-apparmor,--disable-apparmor,apparmor,apparmor"

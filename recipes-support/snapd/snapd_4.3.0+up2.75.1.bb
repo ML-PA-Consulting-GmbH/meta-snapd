@@ -14,7 +14,7 @@ SUMMARY = "The snap tool to enable building snaps and system seeds"
 HOMEPAGE = "https://www.snapcraft.io"
 
 LICENSE = "CLOSED"
-LIC_FILES_CHKSUM = ""
+#LIC_FILES_CHKSUM = ""
 
 S = "${WORKDIR}/snapd"
 

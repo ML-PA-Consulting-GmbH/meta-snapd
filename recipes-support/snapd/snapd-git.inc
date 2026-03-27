@@ -10,7 +10,7 @@ PV = "v4.3.0+up2.75.1"
 
 SRC_URI = "git://github.com/ML-PA-Consulting-GmbH/snapd.git;tag=${PV};protocol=https"
 S = "${WORKDIR}/git"
-# SRCREV = "a469ad4d4f8ab5eee0c945b50d546faaf63e2db6"
+SRCREV = "a469ad4d4f8ab5eee0c945b50d546faaf63e2db6"
 
 S = "${WORKDIR}/git"
 
