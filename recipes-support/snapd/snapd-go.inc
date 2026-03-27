@@ -26,15 +26,13 @@ GO_BUILD_TAGS = "nosecboot nomanagers"
 snapd_go_do_configure() {
 	mkdir -p ${S}/src/github.com/snapcore
 	ln -snf ${S} ${S}/src/${GO_IMPORT}
+	./mkversion.sh ${PV}
 	go_do_configure
 }
 
 snapd_go_do_compile() {
 	(
 		cd ${S}
-		ls -la ${S}/oe-workdir/*
-		ls -la ${S}/src/*
-		GOARCH=${GOHOSTARCH} sh -x ./mkversion.sh ${PV}
 		test -d vendor || ${GO} mod vendor "${@bb.utils.contains('GOBUILDFLAGS', '-modcacherw', '-modcacherw', '', d)}"
 		${GO} install -tags '${GO_BUILD_TAGS_snapd}' ${GOBUILDFLAGS} github.com/snapcore/snapd/cmd/snapd
 		${GO} install -tags '${GO_BUILD_TAGS}' ${GOBUILDFLAGS} github.com/snapcore/snapd/cmd/snap

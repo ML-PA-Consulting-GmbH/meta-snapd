@@ -5,7 +5,7 @@ HOMEPAGE = "https://www.snapcraft.io"
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = ""
 
-require snapd-v2.61.9.inc
+require snapd-v4.3.0+up2.75.1.inc
 S = "${WORKDIR}/snapd-${PV}"
 
 RDEPENDS_${PN} += "		\
