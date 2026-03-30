@@ -26,8 +26,8 @@ GO_BUILD_TAGS = "nosecboot nomanagers"
 snapd_go_do_configure() {
 	mkdir -p ${S}/src/github.com/snapcore
 	ln -snf ${S} ${S}/src/${GO_IMPORT}
-	./mkversion.sh ${PV}
 	go_do_configure
+	(cd ${S} ; GOARCH=${GOHOSTARCH} sh -x ./mkversion.sh ${PV})
 }
 
 snapd_go_do_compile() {
