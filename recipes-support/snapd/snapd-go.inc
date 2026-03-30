@@ -67,7 +67,7 @@ snapd_go_install() {
 snapd_go_do_compile_snap() {
 	# only build the snap tool
 	(
-		cd ${S}
+		cd ${S}/src/${GO_IMPORT}
 		${GO} install -tags '${GO_BUILD_TAGS}' ${GOBUILDFLAGS} github.com/snapcore/snapd/cmd/snap
 	)
 }
