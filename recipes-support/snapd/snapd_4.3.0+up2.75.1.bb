@@ -3,7 +3,7 @@ PR = "r0"
 #SUMMARY = "Snap daemon"
 #DESCRIPTION = "Service to install and manage snap packages"
 #HOMEPAGE = "https://snapcraft.io"
-#LICENSE = "GPL-3.0-only"
+LICENSE = "CLOSED"
 #LIC_FILES_CHKSUM = ""
 
 PV = "v4.3.0+up2.75.1"
