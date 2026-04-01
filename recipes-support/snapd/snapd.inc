@@ -84,7 +84,10 @@ do_compile() {
 	)
 }
 
+require snapd-go.inc
+
 do_install() {
+	snapd_go_install
 	# oe_runmake -C ${B} distclean DESTDIR=${D}
 	install -d ${D}${libdir}/snapd
 	install -d ${D}${bindir}
