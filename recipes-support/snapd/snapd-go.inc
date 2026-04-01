@@ -25,6 +25,8 @@ GO_BUILD_TAGS = "nosecboot nomanagers"
 # to change the symlink set-up, to target snapd's environment.
 snapd_go_do_configure() {
     cd ${S}
+	sed -i '/if \[ ! -f .\/data\/asserts.info \]; then/,/fi/ s/^/#/' mkversion.sh
+	sed -i '/#fi/a fmts="SNAPD_ASSERTS_FORMATS='\''{"account-key":1,"snap-declaration":6,"system-user":2}'\''"' mkversion.sh
     GOARCH=${GOHOSTARCH} sh -x ./mkversion.sh ${PV}
 }
 snapd_go_do_compile() {
