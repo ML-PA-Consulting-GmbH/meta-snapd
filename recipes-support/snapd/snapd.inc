@@ -51,13 +51,11 @@ RDEPENDS:${PN} += " \
 	bash			\
 	ca-certificates		\
 	squashfs-tools		\
-	ssh-server-openssh \
 "
 
 RDEPENDS:${PN}:append:poky = "  \
   openssh-server \
   squashfs-tools \
-  ssh-server-openssh \
   apparmor \
 "
 
