@@ -143,6 +143,12 @@ do_install() {
 	rm -rfv ${D}${datadir}/applications
 }
 
+
+do_install:append() {
+    # Nicht benötigte Verzeichnisse löschen
+    rm -rf ${D}${libdir}/dracut
+    rm -rf ${D}${datadir}/polkit-1
+}
 FILES:${PN} += "                                          \
 	${systemd_unitdir}/system/                        \
 	${systemd_unitdir}/system-generators/             \
@@ -152,7 +158,4 @@ FILES:${PN} += "                                          \
 	${datadir}/dbus-1/                                \
 	/var/lib/snapd                                    \
 	/var/snap                                         \
-	${bindir}/* 									  \
-    ${datadir}/polkit-1/actions/* 					   \
-    ${libdir}/dracut/dracut.conf.d/* 				    \
 "
