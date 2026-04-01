@@ -51,16 +51,23 @@ snapd_go_do_compile() {
 	)
 }
 
+
 snapd_go_install() {
-	install -m 0755 ${B}/${GO_BUILD_BINDIR}/snapd ${D}${libdir}/snapd/
-	install -m 0755 ${B}/${GO_BUILD_BINDIR}/snap-exec ${D}${libdir}/snapd/
-	install -m 0755 ${B}/${GO_BUILD_BINDIR}/snap-seccomp ${D}${libdir}/snapd/
-	install -m 0755 ${B}/${GO_BUILD_BINDIR}/snap-update-ns ${D}${libdir}/snapd/
-	install -m 0755 ${B}/${GO_BUILD_BINDIR}/snapctl ${D}${libdir}/snapd/
-	install -m 0755 ${B}/${GO_BUILD_BINDIR}/snap-failure ${D}${libdir}/snapd/
-	install -m 0755 ${B}/${GO_BUILD_BINDIR}/snapd-apparmor ${D}${libdir}/snapd/
-	install -m 0755 ${B}/${GO_BUILD_BINDIR}/snap ${D}${bindir}
-	ln -s ${libdir}/snapd/snapctl ${D}${bindir}/snapctl
+    install -d ${D}${bindir}
+    install -d ${D}${libdir}/snapd
+    for bin in snapd snap-exec snap-seccomp snap-update-ns snapctl snap-failure snapd-apparmor; do
+        if [ -f "${B}/${GO_BUILD_BINDIR}/$bin" ]; then
+            install -m 0755 ${B}/${GO_BUILD_BINDIR}/$bin ${D}${libdir}/snapd/
+        else
+            bbwarn "Binary $bin nicht in ${B}/${GO_BUILD_BINDIR} gefunden!"
+        fi
+    done
+
+    if [ -f "${B}/${GO_BUILD_BINDIR}/snap" ]; then
+        install -m 0755 ${B}/${GO_BUILD_BINDIR}/snap ${D}${bindir}/
+    fi
+
+    ln -sf ${libdir}/snapd/snapctl ${D}${bindir}/snapctl
 }
 
 snapd_go_do_compile_snap() {

@@ -60,9 +60,6 @@ EXTRA_OECONF += "			\
 	--libexecdir=${libdir}/snapd	\
 	--with-snap-mount-dir=/snap     \
 "
-
-
-
 # Our tools build with autotools are inside the cmd subdirectory
 # and we need to tell the autotools class to look in there.
 AUTOTOOLS_SCRIPT_PATH = "${S}/cmd"
@@ -85,9 +82,7 @@ do_compile() {
     snapd_go_do_compile
 }
 
-
 do_install() {
-	snapd_go_install
 	# oe_runmake -C ${B} distclean DESTDIR=${D}
 	install -d ${D}${libdir}/snapd
 	install -d ${D}${bindir}
@@ -109,7 +104,7 @@ do_install() {
 		SYSTEMDSYSTEMUNITDIR=${systemd_system_unitdir} \
 		SNAP_MOUNT_DIR=/snap \
 		SNAPD_ENVIRONMENT_FILE=${sysconfdir}/default/snapd
-
+	snapd_go_install
 	# systemd system-environment-generators directory is not handled with a
 	# varaible in systemd.pc so the build code does an educated guess of using
 	# ${prefix}/lib/systemd/system-environment-generators which ends up as
