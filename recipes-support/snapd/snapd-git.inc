@@ -23,8 +23,6 @@ RDEPENDS_${PN} += "		\
 	bash \
 "
 
-
-
 do_install() {
 	install -d ${D}${bindir}
 }
