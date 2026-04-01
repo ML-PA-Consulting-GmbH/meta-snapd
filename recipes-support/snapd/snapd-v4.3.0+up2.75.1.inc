@@ -1,7 +1,7 @@
 SUMMARY = "Snap daemon"
 LICENSE = "CLOSED"
 
-PV = "4.3.0+up2.75.1"
+PV = "v4.3.0+up2.75.1"
 PN = "snapd"
 SRC_URI = "https://github.com/ML-PA-Consulting-GmbH/snapd/releases/download/${PV}/${PN}_${PV}.vendor.tar.xz"
 
