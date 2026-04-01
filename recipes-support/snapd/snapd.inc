@@ -16,7 +16,7 @@ HOMEPAGE = "https://www.snapcraft.io"
 LICENSE = "CLOSED"
 #LIC_FILES_CHKSUM = ""
 
-S = "${WORKDIR}/snapd"
+S = "${WORKDIR}/snapd-${PV}"
 
 RDEPENDS_${PN} += "		\
 	ca-certificates		\

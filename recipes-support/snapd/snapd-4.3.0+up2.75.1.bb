@@ -8,10 +8,10 @@ LICENSE = "CLOSED"
 
 PV = "v4.3.0+up2.75.1"
 
-SRC_URI = "git://github.com/ML-PA-Consulting-GmbH/snapd.git;tag=${PV};protocol=https;branch=master;destsuffix=git/"
+SRC_URI = "git://github.com/ML-PA-Consulting-GmbH/snapd.git;tag=${PV};protocol=https;branch=master;destsuffix=snapd-${PV}/"
 #SRCREV = "${AUTOREV}"
 
-S = "${WORKDIR}/git"
+S = "${WORKDIR}/snapd-${PV}"
 
 FILES:${PN} += "/usr/share/polkit-1"
 
