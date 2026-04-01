@@ -143,13 +143,6 @@ do_install() {
 	rm -rfv ${D}${datadir}/applications
 }
 
-
-do_install:append() {
-    # Nicht benötigte Verzeichnisse löschen
-    rm -rf ${D}${libdir}/dracut
-    rm -rf ${D}${datadir}/polkit-1
-	rmdir --ignore-fail-on-non-empty ${D}${bindir}
-}
 FILES:${PN} += "                                          \
 	${systemd_unitdir}/system/                        \
 	${systemd_unitdir}/system-generators/             \
