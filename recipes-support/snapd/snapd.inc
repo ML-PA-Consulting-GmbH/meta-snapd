@@ -152,4 +152,7 @@ FILES:${PN} += "                                          \
 	${datadir}/dbus-1/                                \
 	/var/lib/snapd                                    \
 	/var/snap                                         \
+	${bindir}/* 									  \
+    ${datadir}/polkit-1/actions/* 					   \
+    ${libdir}/dracut/dracut.conf.d/* 				    \
 "
