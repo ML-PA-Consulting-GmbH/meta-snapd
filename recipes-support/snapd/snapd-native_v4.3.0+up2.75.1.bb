@@ -6,7 +6,7 @@ LICENSE = "CLOSED"
 #LIC_FILES_CHKSUM = ""
 
 require snapd-v4.3.0+up2.75.1.inc
-S = "${WORKDIR}/snapd-${PV}"
+S = "${WORKDIR}/${PN}-${PV}"
 
 RDEPENDS_${PN} += "		\
 	ca-certificates		\

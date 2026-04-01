@@ -16,14 +16,12 @@ HOMEPAGE = "https://www.snapcraft.io"
 LICENSE = "CLOSED"
 #LIC_FILES_CHKSUM = ""
 
-S = "${WORKDIR}/snapd"
+S = "${WORKDIR}/${PN}-${PV}"
 
 RDEPENDS_${PN} += "		\
 	ca-certificates		\
 	bash \
 "
-
-
 
 do_install() {
 	install -d ${D}${bindir}
