@@ -2,7 +2,7 @@ DEFAULT_PREFERENCE ??= "-1"
 
 inherit systemd autotools pkgconfig
 
-inherit native
+#inherit native
 
 # Allow fetching dependencies during compilation.
 # Normally they are a part of the tarball
