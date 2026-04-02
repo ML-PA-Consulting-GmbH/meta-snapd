@@ -27,7 +27,9 @@ snapd_go_do_configure() {
     cd ${S}
 	sed -i '/if \[ ! -f .\/data\/asserts.info \]; then/,/fi/ s/^/#/' mkversion.sh
 	sed -i '/#fi/a fmts="SNAPD_ASSERTS_FORMATS='\''{"account-key":1,"snap-declaration":6,"system-user":2}'\''"' mkversion.sh
-    GOARCH=${GOHOSTARCH} sh -x ./mkversion.sh ${PV}
+	version_pv=${PV}
+	version="${version_pv%+*}"
+    GOARCH=${GOHOSTARCH} sh -x ./mkversion.sh "${version#v}"
 }
 snapd_go_do_compile() {
 	(
