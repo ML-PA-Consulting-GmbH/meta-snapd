@@ -2,12 +2,12 @@ SUMMARY = "The snapd daemon and tool"
 HOMEPAGE = "https://snapcraft.io"
 LICENSE = "CLOSED"
 
-PV = "v4.3.0+up2.75.1"
+PV = "v5.1.0+up2.75.2.1"
 
 SRC_URI = "https://github.com/ML-PA-Consulting-GmbH/snapd/releases/download/${PV}/snapd_${PV}.vendor.tar.xz"
 
-SRC_URI[md5sum] = "350a875243f2370e2ad1be939f8a5eb6"
-SRC_URI[sha256sum] = "b78d119972d9391828ad499b67462afc296d575d06d74068ebb53a99f711c741"
+SRC_URI[md5sum] = "81e6e51999ff6c6622f6e09832acaadd"
+SRC_URI[sha256sum] = "0f3a8898f57a7f7f42d381e4dfceb437cdb5bb475d69697cc8a846a87dc0d9f71"
 S = "${WORKDIR}/snapd-v${PV}"
 
 inherit systemd autotools pkgconfig
