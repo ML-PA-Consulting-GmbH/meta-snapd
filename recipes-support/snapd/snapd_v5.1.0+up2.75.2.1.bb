@@ -12,8 +12,8 @@ do_compile[network] = "1"
 SUMMARY = "The snap tool to enable building snaps and system seeds"
 HOMEPAGE = "https://www.snapcraft.io"
 
-LICENSE = "CLOSED"
-#LIC_FILES_CHKSUM = ""
+LICENSE = "GPL-3.0-only"
+LIC_FILES_CHKSUM = "file://${WORKDIR}/snapd-${PV}/COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 S = "${WORKDIR}/snapd-${PV}"
 
